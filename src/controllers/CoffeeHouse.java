@@ -13,7 +13,7 @@ public class CoffeeHouse {
     public static void main(String[] args) {
         File input = new File("drinks.txt");
 
-        Coffee coffee = null;
+        Coffee coffee;
         try {
             coffee = new Coffee(2, "Columbia", "medium", 20);
 
@@ -25,25 +25,33 @@ public class CoffeeHouse {
 
             }
 
+            assert drinks != null;
             for (String drink : drinks) {
-                if (drink.equals(PossibleDrinks.cafeBombon)) {
-                    CoffeeDrink coffeeDrink = new CafeBombon(coffee);
-                    System.out.println(coffeeDrink.toString());
-                } else if (drink.equals(PossibleDrinks.cafeLatte)) {
-                    CoffeeDrink coffeeDrink = new CaffeLatte(coffee);
-                    System.out.println(coffeeDrink.toString());
-                } else if (drink.equals(PossibleDrinks.cappuccino)) {
-                    CoffeeDrink coffeeDrink = new Cappuccino(coffee);
-                    System.out.println(coffeeDrink.toString());
-                } else if (drink.equals(PossibleDrinks.espressino)) {
-                    CoffeeDrink coffeeDrink = new Espressino(coffee);
-                    System.out.println(coffeeDrink.toString());
-                } else if (drink.equals(PossibleDrinks.espresso)) {
-                    CoffeeDrink coffeeDrink = new Espresso(coffee);
-                    System.out.println(coffeeDrink.toString());
-                } else if (drink.equals(PossibleDrinks.latte)) {
-                    CoffeeDrink coffeeDrink = new Latte(coffee);
-                    System.out.println(coffeeDrink.toString());
+                switch (drink) {
+                    case PossibleDrinks.cafeBombon -> {
+                        CoffeeDrink coffeeDrink = new CafeBombon(coffee);
+                        System.out.println(coffeeDrink.toString());
+                    }
+                    case PossibleDrinks.cafeLatte -> {
+                        CoffeeDrink coffeeDrink = new CaffeLatte(coffee);
+                        System.out.println(coffeeDrink.toString());
+                    }
+                    case PossibleDrinks.cappuccino -> {
+                        CoffeeDrink coffeeDrink = new Cappuccino(coffee);
+                        System.out.println(coffeeDrink.toString());
+                    }
+                    case PossibleDrinks.espressino -> {
+                        CoffeeDrink coffeeDrink = new Espressino(coffee);
+                        System.out.println(coffeeDrink.toString());
+                    }
+                    case PossibleDrinks.espresso -> {
+                        CoffeeDrink coffeeDrink = new Espresso(coffee);
+                        System.out.println(coffeeDrink.toString());
+                    }
+                    case PossibleDrinks.latte -> {
+                        CoffeeDrink coffeeDrink = new Latte(coffee);
+                        System.out.println(coffeeDrink.toString());
+                    }
                 }
             }
         } catch (InvalidAttributeValueException | FileNotFoundException e) {
